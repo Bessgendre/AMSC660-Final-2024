@@ -1,0 +1,228 @@
+\documentclass[12pt]{article}
+
+% Packages for math and formatting
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{setspace}
+\usepackage{listings}
+% \usepackage{xcolor}
+
+\usepackage{newtxtext}
+\usepackage{lipsum}
+\usepackage[strict]{changepage}
+\usepackage{framed}
+\usepackage{float}
+\usepackage[letterpaper,left=1in,right=1in,top=1in,bottom=1in]{geometry}
+% \usepackage{tcolorbox}
+\usepackage{cite}
+\usepackage{bm}
+% \usepackage[colorlinks,linkcolor=Black,filecolor=Black,urlcolor=RoyalBlue,citecolor=Cyan,bookmarks=true,bookmarksopen=false,pdfpagemode=FullScreen,pdfstartview=Fit]{hyperref}
+\usepackage[dvipsnames,svgnames]{xcolor}
+% \usepackage{tcolorbox}
+% \definecolor{Brown}{RGB}{139,69,19} 
+\usepackage[colorlinks,linkcolor=Brown,filecolor=Black,urlcolor=RoyalBlue,citecolor=Brown,bookmarks=true,bookmarksopen=false,pdfpagemode=FullScreen,pdfstartview=Fit]{hyperref}
+\usepackage{indentfirst}
+\usepackage{multicol}
+\usepackage[square,numbers,sort&compress]{natbib}
+% \usepackage{refcheck} % To output uncited references
+
+\linespread{1.0}% Set line spacing to single
+\renewcommand{\baselinestretch}{1}% Set single line spacing
+\setlength{\parindent}{1.5em}% Set paragraph indentation
+\setlength{\parskip}{0em}% Remove paragraph spacing
+\raggedbottom% Avoid stretching pages
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\0}{\boldsymbol{0}}
+\newcommand{\setparDis}{\setlength{\parskip}{0.3cm}}
+% \tcbuselibrary{most}
+
+\setlength{\parskip}{0em}% Set paragraph spacing to 0, keep single line spacing
+\setlength{\parindent}{1.5em}% Set paragraph indentation
+\renewcommand{\baselinestretch}{1}% Set single line spacing
+\renewcommand{\familydefault}{\rmdefault}% Set default font to Times New Roman
+\usepackage{microtype}% Ensure full justification
+
+\lstset{ %
+    language=Matlab,                % 语言选择
+    basicstyle=\ttfamily\small,     % 字体样式和大小
+    keywordstyle=\color{blue},      % 关键字的颜色
+    commentstyle=\color{gray},      % 注释的颜色
+    stringstyle=\color{red},        % 字符串的颜色
+    numbers=left,                   % 行号位置 (左侧)
+    numberstyle=\tiny\color{gray},  % 行号的样式
+    stepnumber=1,                   % 行号增量
+    numbersep=5pt,                  % 行号与代码的距离
+    backgroundcolor=\color{white},  % 背景色
+    showspaces=false,               % 不显示空格符
+    showstringspaces=false,         % 不显示字符串中的空格符
+    showtabs=false,                 % 不显示制表符
+    frame=single,                   % 给代码加上边框
+    tabsize=4,                      % 设置制表符宽度
+    captionpos=b,                   % 标题位置
+    breaklines=true,                % 自动换行
+    breakatwhitespace=true,         % 只在空格处换行
+    title=\lstname,                 % 显示代码名称
+    escapeinside={\%*}{*)},         % 在代码中加入LaTeX指令
+    morekeywords={*,...}            % 自定义更多关键词
+}
+
+\setstretch{1.2}
+\setlength{\parskip}{1em}
+
+% Geometry settings for better margins
+% \geometry{a4paper, margin=1in}
+
+% Header and footer
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Kecai Xuan}
+\fancyhead[C]{Math Homework}
+\fancyhead[R]{\today}
+\fancyfoot[C]{\thepage}
+
+\begin{document}
+
+\setlength{\parindent}{0pt}
+
+\begin{titlepage}
+    \centering
+
+    %------------------------------------------------------------
+    %    Top rules
+    %------------------------------------------------------------
+
+    \rule{\textwidth}{1pt}   % The top horizontal rule
+    \vspace{0.04\textheight}  % Whitespace between top horizontal rule and title
+
+    %------------------------------------------------------------
+    %    Title
+    %------------------------------------------------------------
+
+    \begin{figure}[ht]
+      \centering
+      \includegraphics[width=0.4\textwidth]{../img/University_of_Maryland_seal.png}
+    \end{figure}
+
+    \vspace{0.07\textheight}
+        {\Huge \textbf{AMSC660 Final Report}}  % Title
+
+    
+    \vspace{0.03\textheight}
+
+    % \vspace{0.02\textheight}   % Whitespace between the title and short horizontal rule
+
+    \rule{0.83\textwidth}{0.4pt}  % The short horizontal rule under title
+
+    \vspace{0.04\textheight}  % Whitespace between the short horizontal rule and author
+
+    %------------------------------------------------------------
+    %    Author
+    %------------------------------------------------------------
+
+    {\large \textsc{Department of Chemistry and Biochemistry, University of Maryland}}
+
+    \vspace{0.013\textheight}
+
+    {\large \textsc{Kecai Xuan}}
+
+    \vspace{0.013\textheight}
+
+    {\large \href{mailto:kxuan@umd.edu}{kxuan@umd.edu}}
+
+
+
+    % {\Large \href{mailto:xuankecai@gmail.com}{xuankecai@gmail.com}}
+
+
+    \vspace{0.04\textheight}
+
+    % {\Large \textsc{}}
+
+    \vfill  % Whitespace between author and date
+
+    {\large \today}  % The date at the bottom of the page
+    \vspace{0.04\textheight}  % Whitespace between date and bottom horizontal rule
+
+    %------------------------------------------------------------
+    %    Bottom rules
+    %------------------------------------------------------------
+
+    \rule{\textwidth}{1pt}  % The bottom horizontal rule
+
+\end{titlepage}
+
+\section{Linear Discriminant Analysis}
+
+\subsection{Rank of $\mathbf{S_b}$}
+
+Consider the vector set $\{m_1 - m, m_2 - m,\cdots m_c-m\}$, we have the following relation:
+\[
+    \sum_{i=1}^c n_i\left(m_i-m\right)=\bigg[\sum_{i=1}^c n_i m_i\bigg]-n m=n m-n m=0
+\]
+which means that there exist the nonzero linear combination parameters such that the sum of the vectors is zero. Therefore, the vector set is linearly dependent.
+
+Since $S_b$ is defined as
+\[
+    \displaystyle S_b=\sum_{i=1}^c n_i\left(m_i-m\right)\left(m_i-m\right)^\top
+\]
+a weighted sum of these rank-1 matrices, it follows that the image (or output) of the linear transformation defined by $S_b$ lies within the space spanned by the vector set $\{m_1 - m, m_2 - m,\cdots m_c-m\}$. That is because when applying $S_b$ to any vector $x$, it gives the linear combination of the vectors in the set:
+\[
+    S_b x = \sum_{i=1}^c n_i\left(m_i-m\right)\left(m_i-m\right)^\top x
+\]
+where $\left(m_i-m\right)^\top x$ is a scalar. 
+
+The rank of matrix $S_b$ is equal to the dimension of its image, which is the space spanned by the vector set $\{m_1 - m, m_2 - m,\cdots m_c-m\}$ that is linearly dependent. Therefore, the rank of $S_b$ is at most $c-1$.
+
+\subsection{Gradient of $\mathbf{J(w)}$}
+
+The gradient of $J(w)$ is given by
+\begin{align*}
+    \nabla J(w) &= \nabla \left(\frac{w^\top S_b w}{w^\top S_w w}\right)\\
+    &= \frac{2}{(w^\top S_w w)^2} \bigg[ (w^\top S_w w) S_b w - (w^\top S_b w) S_w w \bigg]
+\end{align*}
+Let it be zero, we have $(w^\top S_w w) S_b w - (w^\top S_b w) S_w w = 0$, where $w^\top S_w w, w^\top S_b w$ are scalars. So the only way to get the equation satisfied is to have 
+\[
+    S_b w = \lambda S_w w, \quad \lambda = \frac{w^\top S_b w}{w^\top S_w w}
+\]
+
+\subsection{Cholesky Decomposition}
+
+It is obvious that $S_w$ is a SPD matrix, which can be decomposed as $S_w = L L^\top$. Define $y = L^\top w, w = L^{-\top} y$, then the equation $S_b w = \lambda S_w w$ can be rewritten as
+\begin{align*}
+    S_b L^{-\top} y = \lambda L y \quad \Rightarrow \quad  L^{-1} S_b L^{-\top} y = \lambda y
+\end{align*}
+which takes the form of $Ay = \lambda y$ where $A = L^{-1} S_b L^{-\top}$ is SPD.
+    
+\subsection{LDA Performance and Comparison with PCA on MINST}
+
+The projection of the data onto the first two linear discriminants and the first two principal components are shown in the following figure. For this problem, tt is clear that the linear discriminants are able to separate the data better than the principal components.
+
+\begin{figure}[h!]
+    \centering
+    % Subfigure for LDA
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../img/problem_1/LDA.png}
+        \label{fig:lda}
+    \end{subfigure}
+    \hfill
+    % Subfigure for PCA
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../img/problem_1/PCA.png}
+        \label{fig:pca}
+    \end{subfigure}
+    \label{fig:lda_vs_pca}
+\end{figure}
+
+\end{document}
