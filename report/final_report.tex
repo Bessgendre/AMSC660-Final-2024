@@ -213,6 +213,7 @@ The projection of the data onto the first two linear discriminants and the first
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../img/problem_1/LDA.png}
+        \caption{LDA Performance}
         \label{fig:lda}
     \end{subfigure}
     \hfill
@@ -220,9 +221,147 @@ The projection of the data onto the first two linear discriminants and the first
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{../img/problem_1/PCA.png}
+        \caption{PCA Performance}
         \label{fig:pca}
     \end{subfigure}
     \label{fig:lda_vs_pca}
+    \caption{LDA and PCA on MINST dataset}
+\end{figure}
+
+\section{Adam and BFGS on Spring Optimization}
+
+\subsection{Convergence Near Optimal Solution}
+
+
+
+I implemented the Adam method and BFGS method to optimize the spring system. The final configuration of the spring system is shown in fig.\ref{fig:adam_config} and fig.\ref{fig:bfgs_config}.
+\begin{figure}[h!]
+    \centering
+    % Subfigure for LDA
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../img/problem_2/adam.png}
+        \caption{Adam final configuration}
+        \label{fig:adam_config}
+        
+    \end{subfigure}
+    \hfill
+    % Subfigure for PCA
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../img/problem_2/bfgs.png}
+        \caption{BFGS final configuration}
+        \label{fig:bfgs_config}
+    \end{subfigure}
+    \label{fig:config}
+    \caption{Final Configuration of Spring System Using Adam and BFGS}
+\end{figure}
+
+The Adam method converged at:
+\[
+    \text{iteration}= 187,\quad	\text{energy} = 1.4924514079509037,\quad	\text{gradient norm} = 9.54947425912235\times 10^{-7}
+\]
+with the final vector:
+\begin{align*}
+    &\text{theta} = \begin{bmatrix}
+        2.35620 & 2.35620 & 3.14160 & 3.92699 \\
+        3.92699 & 4.71239 & 5.49779 & 5.49779 \\
+        6.28319 & 7.06859 & 7.06859 & 7.85399 \\
+    \end{bmatrix}
+    \\
+    &\text{position} = \begin{bmatrix}
+        -1.28645 & -1.33638\times 10^{-5} &  1.28642 & -1.46011 \\
+        2.46565\times 10^{-8} &  1.46011 & -1.28642 &  1.33410\times 10^{-5} \\
+        1.28645 &  1.28642 &  1.46011 &  1.28645 \\
+       -1.33433\times 10^{-5} & -2.12707\times 10^{-8} &  1.33654\times 10^{-5} & -1.28645 \\
+       -1.46011 & -1.28642 & & 
+    \end{bmatrix}
+\end{align*}
+while the BFGS method converged at
+\[
+    \text{iteration}= 31,\quad	\text{energy} = 1.4924514079508941,\quad	\text{gradient norm} = 3.8268520084642785\times 10^{-7}.
+\]
+whose final vector is almost the same as the Adam method.
+
+\subsection{Performance Near Optimal Solution}
+
+The results are shown in fig.\ref{fig:energy}  and fig.\ref{fig:gradient_norm}. We show that the Adam method decreases linearly when using logarithmic scale, while the BFGS method decreases even faster when the initial position is near the optimal solution.
+\begin{figure}[h!]
+    \centering
+    % Subfigure for LDA
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../img/problem_2/energy.png}
+        \caption{Energy vs. Iteration}
+        \label{fig:energy}
+        
+    \end{subfigure}
+    \hfill
+    % Subfigure for PCA
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../img/problem_2/gradient_norm.png}
+        \caption{Gradient Norm vs. Iteration}
+        \label{fig:gradient_norm}
+    \end{subfigure}
+    \label{fig:adam_vs_bfgs}
+    \caption{Adam and BFGS on Spring Optimization}
+\end{figure}
+
+\section{Far from Optimal Solution}
+
+For random generated initial positions, the Adam method fails significantly. The energy and gradient norm are shown in fig.\ref{fig:energy_random} and fig.\ref{fig:gradient_norm_random} in 500 iterations, which is enough for BFGS convergence. 
+\begin{figure}[h!]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../img/problem_2/energy_random.png}
+        \caption{Energy vs. Iteration}
+        \label{fig:energy_random}
+        
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../img/problem_2/gradient_norm_random.png}
+        \caption{Gradient Norm vs. Iteration}
+        \label{fig:gradient_norm_random}
+    \end{subfigure}
+    \label{fig:adam_vs_bfgs_random}
+    \caption{Adam and BFGS on Spring Optimization with Random Initial Positions}
+\end{figure}
+
+The initial configuration, Adam final configuration and BFGS configuration are shown in fig.\ref{fig:config_random}, fig.\ref{fig:adam_config_random} and fig.\ref{fig:bfgs_config_random} respectively.
+
+\begin{figure}[h!]
+    \centering
+    % Subfigure for LDA
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../img/problem_2/random.png}
+        \caption{Initial Configuration}
+        \label{fig:config_random}
+        
+    \end{subfigure}
+    \hfill
+    % Subfigure for PCA
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../img/problem_2/adam_random.png}
+        \caption{Adam final configuration}
+        \label{fig:adam_config_random}
+        
+    \end{subfigure}
+    \hfill
+    % Subfigure for PCA
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../img/problem_2/bfgs_random.png}
+        \caption{BFGS final configuration}
+        \label{fig:bfgs_config_random}
+    \end{subfigure}
+    \label{fig:config_random}
+    \caption{Spring System with Random Initial Positions Using Adam and BFGS}
 \end{figure}
 
 \end{document}
